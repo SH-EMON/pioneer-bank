@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pioneer bank account</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="login_area">
+        <h1 class="text-center">Welcome to Pionner Bank </h1>
+        <div class="submit_area">
+            <label class="form-group" for="">Login</label>
+            <input type="email" class="form-control" placeholder="write your email" name="" id=""> <br>
+            <input type="password" class="form-control" placeholder="write your password" name="" id=""> <br>
+            <butotn id="sign_in" class="btn btn-success text-white">Enter</butotn>
+        </div>
+    </div>
+
+    <div id="transaction_area">
+        <div>
+            <div class="row">
+                <div class="col-md-4">
+                <div class="deposit status">
+                        <h5>Deposit</h5>
+                        <h2>$ <span id="currentDeposit">00</span> </h2>
+                </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widthdrow status">
+                        <h5>Widthdrow</h5>
+                        <h2>$ <span id="currentWidthdraw">00</span></h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                <div class="balance status">
+                        <h5>Balance</h5>
+                        <h2>$ <span id="currentBalance">1250</span></h2>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <div Id="depoWidth_area">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="submit_area">
+                        <h4>Deposit</h4>
+                        <input id="addDeposit" type="number" class="form-control" placeholder="$ amount you want to deposit"><br>
+                        <button id="depositBtn" class="btn btn-success">Deposit</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="submit_area">
+                        <h4>Withdrow</h4>
+                        <input id="addwidthdraw" type="number" class="form-control" placeholder="$ amount you want to withdrow"><br>
+                        <button  id="widthdrawBtn" class="btn btn-success">Widthdrow</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+  
+
+    <script>
+        //login handler
+        const signinArea =document.getElementById("sign_in");
+        signinArea.addEventListener("click",function(){
+            const loginArea =document.getElementById("login_area");
+            loginArea.style.display ="none";
+            const transaction =document.getElementById("transaction_area");
+            transaction.style.display ="block";
+        });
+
+        //Deposit handler
+        const deposit =document.getElementById("depositBtn");
+        deposit.addEventListener("click",function(){
+            const depositAmount = document.getElementById("addDeposit").value
+            const depositNumber = parseFloat(depositAmount);
+
+
+            
+            const currentDeposit = document.getElementById("currentDeposit").innerText;
+            const currentDepositNumber = parseFloat(currentDeposit);
+            const totalDeposit = depositNumber + currentDepositNumber;
+            document.getElementById("currentDeposit").innerText = totalDeposit;
+
+  
+
+            const current = document.getElementById("currentBalance").innerText;
+            const currentBalanceNumber = parseFloat(current);
+            const increaseBalance = depositNumber + currentBalanceNumber;
+            document.getElementById("currentBalance").innerText = increaseBalance;
+
+
+            //spanTextUpdate("currentDeposit", depositNumber);
+            //spanTextUpdate("currentBalance", depositNumber);
+
+            document.getElementById("addDeposit").value ="";
+
+        });
+
+        //Widthdraw Handler
+
+        const widthdrawPart = document.getElementById("widthdrawBtn");
+        widthdrawPart.addEventListener("click",function(){
+            const widthdrawAmount = document.getElementById("addwidthdraw").value;
+            const widthdrawNumber = parseFloat(widthdrawAmount);
+
+            const addWidthdraw = document.getElementById("currentWidthdraw").innerText;
+            const addWidthdrawNumber = parseFloat(addWidthdraw);
+            const totalWidthdraw = widthdrawNumber + addWidthdrawNumber;
+            document.getElementById("currentWidthdraw").innerText = totalWidthdraw;
+
+            const current = document.getElementById("currentBalance").innerText;
+            const currentBalanceNumber = parseFloat(current);
+            const decreaseBalance = currentBalanceNumber-widthdrawNumber;
+            document.getElementById("currentBalance").innerText = decreaseBalance;
+
+
+            document.getElementById("addwidthdraw").value = "";
+        });
+
+
+        // function spanTextUpdate(id, depositNumber){
+        //     const current = document.getElementById(id).innerText;
+        //     const currentBalanceNumber = parseFloat(current);
+        //     const totalBalance = depositNumber + currentBalanceNumber;
+        //     document.getElementById(id).innerText = totalBalance;
+        // };
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+</html>

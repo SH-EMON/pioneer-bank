@@ -1,0 +1,31 @@
+body{
+    padding:100px;
+}
+.submit_area{
+    margin-top:20px;
+    box-shadow:1px 1px 10px lightgray;
+    padding:40px;
+    border-radius:10px;
+}
+#sign_in{
+    padding:5px 15px;
+    font-size:18px;
+}
+#transaction_area{
+    display:none;
+}
+.deposit{
+    background-color: orange;
+
+}
+.widthdrow{
+    background-color: slateblue;
+}
+.balance{
+    background-color: salmon;
+}
+.status{
+    margin-left: 10px;
+    padding:30px;
+    color:#fff;
+}
